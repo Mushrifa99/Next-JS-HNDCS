@@ -4,6 +4,7 @@ import InputGroup from "./InputGroup";
 import { LoaderIcon, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { users } from "@/lib/data";
+import { saveLoggedInUser } from "@/lib/auth";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -49,6 +50,13 @@ export default function LoginForm() {
             setFeedback({ type: "error", text: "Invalid email or password"});
             return;
         }
+
+        // Save the user Data
+        saveLoggedInUser({
+            id: matchedUser.id,
+            name: matchedUser.name,
+            email: matchedUser.email
+        })
 
         setFeedback({ type: "success", text: "Login Successful! Redirecting....."});
         console.log("Login Successful! Redirecting.....");
