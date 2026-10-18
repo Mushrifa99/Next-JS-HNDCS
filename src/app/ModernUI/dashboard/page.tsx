@@ -16,12 +16,13 @@ export default function page() {
 
     if (!user) {
       alert("User Not found");
+      router.replace("login");
       return;
     }
 
-    setUserId(user.id);
-    setUserEmail(user.email);
-    setUserName(user.name);
+    setUserId(user.id ?? "");
+    setUserEmail(user.email ?? "");
+    setUserName(user.name ?? "");
     setLoading(false);
 
   }, []);
