@@ -62,7 +62,7 @@ export default function LoginForm() {
         console.log("Login Successful! Redirecting.....");
         setEmail("");
         setPassword("");
-        router.push("/ModernUI/dashboard");
+        router.push(`/ModernUI/dashboard/${matchedUser.id}`);
     }
 
     function handleForgotPassword() {
